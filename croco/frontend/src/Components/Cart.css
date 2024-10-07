@@ -1,0 +1,47 @@
+h3 {
+    font-family: Trebuchet MS;
+    font-size: 28px;
+    color: black;
+}
+
+.btn {
+    font-family: Trebuchet MS;
+}
+
+.table th,
+.table td {
+    border: 0.5px solid #adadadb6;
+}
+
+.table th {
+    background-color: #dadee681;
+}
+
+.custom-table thead th,
+.custom-table tbody td {
+    font-family: Trebuchet MS; /* Use Arial font */
+}
+
+.btn:hover {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.product-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.img-thumbail {
+    display: block;
+    margin: 0 auto;
+    max-width: 75px;
+}
+
+/* Set transparent background for tbody and tfoot */
+.table tbody,
+.table tfoot {
+    background-color: #dadee600;
+    border: 0.5px solid #a8a8a800;
+}

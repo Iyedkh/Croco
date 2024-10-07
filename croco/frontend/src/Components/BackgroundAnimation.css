@@ -1,0 +1,42 @@
+/* BackgroundAnimation.css */
+
+/* Main default background */
+#bg.default-bg {
+  background-image: url(https://4kwallpapers.com/images/walls/thumbs_3t/793.jpg);
+}
+
+#bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center top;
+  animation: bgAnim 20s infinite;
+}
+
+@keyframes bgAnim {
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Croco Nutrition Background */
+.nutrition-bg {
+  background-image: url(https://4kwallpapers.com/images/walls/thumbs_3t/793.jpg);
+}
+
+/* Croco Team Background */
+.team-bg {
+  background-image: url('C:\Users\user\Desktop\work\croco\frontend\public/azer.jpg');
+}
+
+/* Croco Wear Background */
+.wear-bg {
+  background-image: url('https://www.cuirs-guignard.com/media/leahter_textured_background.png');
+}

@@ -1,0 +1,58 @@
+.login-card {
+    width: 500px; /* Adjust the width as needed */
+    height: 420px; /* Adjust the height as needed */
+    border: 1px solid #ced4da;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     /* Add background color */
+    position: relative;
+    top: 60%; /* Adjust the distance from the top */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.card-body {
+    padding: 1.25rem;
+}
+
+
+
+.form-label {
+    margin-bottom: 0.5rem;
+    
+}
+
+
+.custom-img {
+    max-width: 200px; /* Adjust the maximum width as needed */
+    max-height: 50px; /* Adjust the maximum height as needed */
+    display: flex; /* Ensures the image is centered */
+    position: relative; /* Set position to relative */
+    top: 20px; /* Adjust the top property to move the image down */
+    margin-bottom: 50px;
+}
+.custom-form {
+    width: 100%;
+    max-width: 900px; /* Limit the maximum width of the form */
+    margin-top: 30px; /* Adjust the top margin as needed */
+    margin-bottom: 30px; /* Adjust the bottom margin as needed */
+    margin-left: auto; /* Center the form horizontally */
+    margin-right: auto; /* Center the form horizontally */
+    padding: 20px; /* Adjust the padding as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+footer {
+    position:relative; /* or position: absolute; */
+    bottom: -145px;
+    left: 0;
+    width: 100%; /* Adjust the background color as needed */
+    padding: 0px;
+    border-top: 5px solid #ccc; /* Add a border if needed */
+}

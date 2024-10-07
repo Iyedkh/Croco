@@ -1,0 +1,450 @@
+/* App.css */
+.main-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+  }
+  
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #000000; 
+    font-family: 'Arial', sans-serif; 
+  }
+  
+  
+  
+  
+  
+ 
+  
+
+  
+  input:checked + .slider:before {
+    transform: translateX(16px);
+  }
+  .button-30 {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+  }
+  
+  .button-30:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  }
+  
+  .button-30:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  .button-30:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+  
+ 
+  
+  .card {
+      width: 100%; /* Adjust the width as needed */
+      border-radius: 0px; /* Set the border radius to make the corners more circular */
+      background-color: rgb(255, 255, 255); /* Set the background color with alpha transparency */
+      height: 100%;
+  }
+  
+  
+  /* Adjust the size of the card image */
+  .card img {
+    max-width: 100%; /* Ensure the image fits within the card */
+    margin: 6px auto 0; /* Center the image horizontally and add 10px margin to the top */
+    display: block;  /* Ensure block-level behavior for the image */
+    mix-blend-mode: darken;
+    border-radius: 0px; /* Apply a border radius */
+  }
+  
+  
+  /* Adjust the size of the card title */
+  .card-title {
+      font-size: 1rem; /* Adjust the font size as needed */
+  }
+  /* styles.css */
+  
+  /* Main product container */
+  .product-container {
+    margin: 1rem; /* Margin for the entire container */
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+  }
+  
+  /* Row styling for products */
+  .product-row {
+    display: flex;
+    flex-wrap: wrap; /* Allows responsive wrapping of columns */
+    margin: -0.5rem; /* Negative margin to handle spacing between columns */
+  }
+  
+  /* Individual column styling for products */
+  .product-col {
+    flex: 0 0 100%; /* Full width on small screens */
+    max-width: 100%; /* Ensure it takes full width on small screens */
+  }
+  
+  @media (min-width: 768px) {
+    .product-col {
+        flex: 0 0 25%; /* 3 columns on medium screens */
+        max-width: 25%; /* Ensures proper sizing */
+    }
+  }
+  
+  /* Card styling for individual products */
+  .product-card {
+    max-width: 24rem; /* Set max width for cards */
+    background-color: #fff; /* White background */
+    border-radius: 0.5rem; /* Rounded corners */
+    overflow: hidden; /* Ensures children do not overflow */
+  }
+  
+  /* Image styling */
+  .product-image {
+    width: 100%; /* Full width */
+    border-top-left-radius: 0.5rem; /* Rounded top corners */
+    border-top-right-radius: 0.5rem; /* Rounded top corners */
+  }
+  
+  /* Title styling */
+  .product-title  {
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    font-weight: 600; /* Equivalent to font-semibold */
+    color: #1f2937; /* Dark gray text */
+    text-decoration: none;
+    text-align: center;
+    padding-top: 3px;
+  }
+  .product-link  {
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    font-weight: 600; /* Equivalent to font-semibold */
+    color: #1f2937; /* Dark gray text */
+    text-decoration: none;
+  }
+  
+  /* Rating section */
+  .product-rating {
+    display: flex;
+    align-items: center;
+  }
+  
+  .star-icon {
+    height: 1.25rem; /* Height for star icons */
+    width: 1.25rem; /* Width for star icons */
+    color: #f59e0b; /* Yellow color for stars */
+  }
+  
+  /* Rating score styling */
+  .rating-score {
+    margin-left: 0.75rem; /* Left margin */
+    margin-right: 0.5rem; /* Right margin */
+    border-radius: 0.25rem; /* Rounded corners */
+    background-color: #cffafe; /* Light cyan background */
+    padding: 0.25rem 0.5rem; /* Padding */
+    font-size: 0.75rem; /* Small text */
+    font-weight: 600; /* Semi-bold */
+    color: #1d4ed8; /* Dark cyan text */
+  }
+  
+  /* Product information styling */
+  .product-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px; /* Space between price and button */
+  }
+  
+  /* Price styling */
+  .product-price {
+    font-size: 1.875rem; /* Equivalent to text-3xl */
+    font-weight: bold; /* Bold font */
+    color: #1f2937; /* Dark gray text */
+  }
+  
+  /* Add to cart button styling */
+  .add-to-cart-button {
+    border-radius: 0.5rem; /* Rounded corners */
+    border-color: #dee2e6;
+    background-color: #50b966; /* Dark cyan background */
+    padding: 0.625rem 1.25rem; /* Padding */
+    font-size: 0.875rem; /* Font size */
+    font-weight: 500; /* Medium font weight */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s; /* Smooth background transition */
+  }
+  
+  /* Hover state for add to cart button */
+  .add-to-cart-button:hover {
+    background-color: #155e75; /* Darker cyan on hover */
+  }
+  
+  /* Responsive adjustments for small screens */
+  @media (max-width: 768px) {
+    .product-col {
+        flex: 0 0 100%; /* Full width on small screens */
+        max-width: 100%; /* Ensure it takes full width on small screens */
+    }
+  }
+  
+  
+  /* Adjust the size of the card footer */
+  
+  
+  
+    .carousel {
+      background-color: transparent !important; /* Override the default dark background */
+    }
+    .carousel-control-next-icon {
+      color: black !important;
+  }
+  
+ 
+  
+  .link-wrapper {
+    background-color: rgba(255, 255, 255, 0); /* Adjust the background color with alpha transparency */
+    border-top-left-radius: 20px; /* Set border radius for the top-left corner */
+    border-top-right-radius: 20px; /* Set border radius for the top-right corner */
+    padding: 10px; /* Adjust padding as needed */
+    display: inline-block;
+  }
+  
+  .card img.no-blend-mode {
+    mix-blend-mode: normal; 
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  }
+  
+  .pagination .page-link {
+    color: #000000;
+    background-color: #b6b6b61f;
+    border: 1px solid #dee2e6;
+    margin: 0 3px;
+  }
+  
+  .pagination .page-link:hover {
+    z-index: 2;
+    color: #337dcc;
+    text-decoration: none;
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+  
+  
+  .list-group {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    color: black;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    
+  }
+  
+  .list-group-item {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: #86868600;
+    border-radius: 0px;
+  }
+  
+  .list-group-item-action {
+    font-family: 'Trebuchet MS';
+    font-size: 16px;
+    color: black;
+    background-color: #ffffff53;
+  }
+  
+  .list-group-item-action:hover {
+    color: rgb(0, 0, 0); /* Change the color on hover if desired */
+  }
+  
+  .card-hover {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgb(255, 255, 255);
+  }
+  
+  
+  /* Ensure images and container are correctly sized and styled */
+  .image-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if they overflow */
+    justify-content: center; /* Center all images */
+    gap: 70px; /* Space between images */
+    margin: 0 auto; /* Center the row on the page */
+    max-width: 80%; /* Adjust the width of the row to control spacing */
+    padding: 0 10px; /* Add padding to ensure spacing from page edges */
+  }
+  
+  .image-container {
+    text-align: center;
+    flex: 1 1 auto; /* Allow containers to grow and shrink */
+    max-width: 300px; /* Set a max-width for the container */
+    margin: 10px; /* Add margin around each container */
+  }
+  
+  .image-container img {
+    width: 270px; /* Adjust the size to your preference */
+    height: 270px; /* Adjust the size to your preference */
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .image-title {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', sans-serif; /* Ensure font-family is applied correctly */
+    color: #ffffff; /* Ensure text color contrasts with background */
+    white-space: normal; /* Allow text to wrap to the next line if needed */
+    overflow: hidden; /* Hide text overflow */
+    text-overflow: ellipsis; /* Show ellipsis if text overflows */
+    display: block; /* Ensure it is a block element for proper alignment */
+    width: 100%; /* Ensure it takes up the full width of its container */
+  }
+  
+  
+  .welcome-text {
+    width: 100%;
+    font-size: 4rem;
+    text-align: center;
+    font-weight: bolder;
+    font-family: "Bebas Neue", cursive;
+    margin-bottom: 80px; /* Space between text and images */
+    color: white;
+  }
+  
+  /* Other existing styles */
+  #bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center top;
+    animation: bgAnim 20s infinite;
+  }
+  
+  @keyframes bgAnim {
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .messenger-bubble {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff9b;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    z-index: 1000; /* Ensure it stays on top */
+    position: fixed; /* Fix position to make it draggable */
+  }
+  
+  .messenger-logo {
+    width: 50px; /* Reduce the size by setting a smaller width */
+    height: 50px; /* Ensure height matches the new width */
+    display: block;
+    margin: auto;
+  }
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .full-width-slider {
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slick-slide {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .slick-slide img {
+    width: 100%; /* Ensure the image covers full width */
+    height: 100%; /* Ensure it covers full height */
+    object-fit: cover; /* Prevents distortion and ensures the image covers the entire div */
+    display: block;
+  }
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,65 @@
+.card.register-card1 {
+    width: 580px; /* Adjust the width as needed */
+    height: 990px; /* Adjust the height as needed */
+    border: 1px solid #ced4da;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffffa9; /* Add background color */
+    position: relative;
+    top: 50%; /* Adjust the distance from the top */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+
+.form-label {
+    margin-bottom: 0.5rem;
+    font-family: Trebuchet MS;
+    width: 300px;
+}
+
+.form-control {
+    font-family: Trebuchet MS;
+
+}
+
+.btn {
+    font-family: Trebuchet MS;
+}
+
+.custom-img {
+    max-width: 200px; /* Adjust the maximum width as needed */
+    max-height: 50px; /* Adjust the maximum height as needed */
+    display: block; /* Ensures the image is centered */
+    margin-top: 100px; /* Centers the image horizontally */
+}
+
+.custom-form {
+    width: 100%;
+    max-width: 900px; /* Limit the maximum width of the form */
+    margin-top: 10px; /* Adjust the top margin as needed */
+    margin-bottom: 30px; /* Adjust the bottom margin as needed */
+    margin-left: auto; /* Center the form horizontally */
+    margin-right: auto; /* Center the form horizontally */
+    padding: 20px; /* Adjust the padding as needed */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.custom-form .form-control {
+    width: 100%; /* Set the width to 100% to make the fields expand horizontally */
+    max-width: 600px; /* Optionally, set a maximum width to prevent the fields from expanding too wide */
+}
+
+.card.hover-effect:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

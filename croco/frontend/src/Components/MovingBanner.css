@@ -1,0 +1,40 @@
+/* MovingBanner.css */
+
+.moving-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: 
+    #397a25;
+    padding: 10px 0;
+    z-index: 1100; /* Higher than the navbar's z-index */
+}
+
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px; /* Adjust height to your preference */
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative; /* Ensures .moving-text is positioned absolutely */
+}
+
+.moving-text {
+    position:relative; /* Allows text to move continuously */
+    animation: moveText 7.5s linear infinite;
+}
+
+.centered-text {
+    color: rgb(255, 255, 255);
+    font-size: 17px; /* Adjust font-size to your preference */
+    font-weight: bold;
+    text-align: center;
+    height: 8px;
+}
+
+@keyframes moveText {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}

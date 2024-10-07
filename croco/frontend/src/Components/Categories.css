@@ -1,0 +1,25 @@
+
+  section {
+    padding-top: 130px; /* Adjust the value according to the height of your navbar */
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px; /* Adjust the value to move it down */
+}
+
+
+.card-hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the image itself doesn't change */
+.card-img-top {
+  transition: none;
+}

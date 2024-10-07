@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-+wMGjuUZOG9xgXd2If3mYZR1Amu6mx1aM6sSKDD5F3YD4HFcLyMWBnoC9jlH/ya3" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Trebuchet MS;
+        }
+        h1 {
+            text-align: center;
+        }
+        .percentage-box-container {
+            width: 100%;
+            margin: 70px auto;
+            text-align: center;
+            white-space: nowrap; /* Prevent line break */
+        }
+        .percentage-box {
+            width: 14%;
+            margin: 0 1%;
+            padding: 15px;
+            border: 2px solid #000;
+            background-color: #e4f1fe;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .chart-container {
+            width: 40%;
+            float: left;
+            margin: 2% 2% 2% 5%;
+            padding: 10px;
+        }
+        .chart-canvas {
+            width: 100%;
+            height: 150px;
+        }
+        /* Light mode styles */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+        }
+        /* Dark mode styles */
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        /* Additional styles for dark mode */
+        .dark-mode h1 {
+            color: #ffffff;
+        }
+        .mode-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        .mode-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ffffff; /* Light mode color */
+    border: 2px solid #000000;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .mode-icon {
+    background-color: #000000; /* Dark mode color */
+}
+
+    </style>
+</head>
+<body>
+    
+<h1 style="font-size: 33px;">Dashboard</h1>
+<div class="percentage-box-container">
+    <div class="percentage-box">
+        Sales Percentage: {{ sales_percentage_data.0|floatformat:"2" }}%
+    </div>
+    <div class="percentage-box">
+        Total Users: {{ total_users_count}}
+    </div>
+    <div class="percentage-box">
+        Total Buyers: {{ buyers_count_data.0 }}
+    </div>
+    <div class="percentage-box">
+        Total Vendors: {{ vendors_count_data.0 }}
+    </div>
+    <div class="percentage-box">
+        Total Products: {{ total_products}}
+    </div>
+</div>
+
+<div class="chart-container">
+    <canvas id="loginChart" class="chart-canvas"></canvas>
+    <select id="loginChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('loginChart')">Download CSV</button>
+</div>
+<div class="chart-container">
+    <canvas id="registrationChart" class="chart-canvas"></canvas>
+    <select id="registrationChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('registrationChart')">Download CSV</button>
+</div>
+
+<div class="chart-container">
+    <canvas id="userChart" class="chart-canvas"></canvas>
+    <select id="userChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('userChart')">Download CSV</button>
+</div>
+<div class="chart-container">
+    <canvas id="orderChart" class="chart-canvas"></canvas>
+    <select id="orderChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('orderChart')">Download CSV</button>
+</div>
+<div class="chart-container">
+    <canvas id="categoryChart" class="chart-canvas"></canvas>
+    <select id="categoryChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('categoryChart')">Download CSV</button>
+</div>
+<div class="chart-container">
+    <canvas id="subcategoryChart" class="chart-canvas"></canvas>
+    <select id="subcategoryChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('subcategoryChart')">Download CSV</button>
+</div>
+<div class="chart-container">
+    <canvas id="buyerChart" class="chart-canvas"></canvas>
+    <select id="buyerChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('buyerChart')">Download CSV</button>
+</div>
+<div class="chart-container">
+    <canvas id="productsByVendorChart" class="chart-canvas"></canvas>
+    <select id="productsByVendorChartType">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+    </select>
+    <button onclick="downloadChart('productsByVendorChart')">Download CSV</button>
+</div>
+
+
+
+<!-- Mode switcher -->
+<div class="mode-switcher" id="mode-switcher">
+    <label for="mode-toggle">Dark Mode</label>
+    <div class="mode-icon" id="mode-icon"></div>
+</div>
+
+<style>
+    .mode-icon {
+        cursor: pointer;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #000000; /* Light mode background color */
+        border: 2px solid #000000;
+        border-radius: 50%;
+    }
+
+    .dark-mode .mode-icon {
+        background-color: #ffffff; /* White background color in dark mode */
+    }
+</style>
+
+
+<script>
+    const modeIcon = document.getElementById('mode-icon');
+    const modeLabel = document.querySelector('.mode-switcher label');
+    const body = document.body;
+
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+        body.classList.toggle('dark-mode');
+        updateModeLabel();
+    }
+
+    // Function to update mode label text
+    function updateModeLabel() {
+        if (body.classList.contains('dark-mode')) {
+            modeLabel.textContent = 'Light Mode';
+        } else {
+            modeLabel.textContent = 'Dark Mode';
+        }
+    }
+
+    // Toggle dark mode and update label text when icon is clicked
+    modeIcon.addEventListener('click', toggleDarkMode);
+
+    // Update label text when page loads
+    window.addEventListener('load', updateModeLabel);
+</script>
+
+
+
+
+<script>
+
+    Chart.defaults.font.family = 'Trebuchet MS';
+    Chart.defaults.font.size = 13; // Change the font size here
+    Chart.defaults.font.color = '#000000';
+    // Function to update chart type
+    function updateChartType(chart, type) {
+        chart.config.type = type;
+        chart.update();
+    }
+
+        // Download chart data as CSV
+        function downloadChart(chartId) {
+        const canvas = document.getElementById(chartId);
+        const chart = Chart.getChart(canvas);
+
+        // Convert chart data to CSV format
+        const data = chart.data.labels.map((label, index) => ({
+            label: label,
+            value: chart.data.datasets[0].data[index]
+        }));
+
+        const csvData = Papa.unparse(data);
+
+        // Save CSV file using FileSaver.js
+        var blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+        saveAs(blob, `${chartId}.csv`);
+    }
+
+
+    // Chart for total users
+    var userCtx = document.getElementById('userChart').getContext('2d');
+    var userChart = new Chart(userCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ user_labels|safe }},
+            datasets: [{
+                label: 'Total weekly users',
+                data: {{ user_data|safe }},
+                backgroundColor: 'rgba(89, 171, 227, 1)',
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    // Chart for total orders
+    var orderCtx = document.getElementById('orderChart').getContext('2d');
+    var orderChart = new Chart(orderCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ order_labels|safe }},
+            datasets: [{
+                label: 'Total Orders per day',
+                data: {{ order_data|safe }},
+                backgroundColor: 'rgba(245, 229, 27, 1)',
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+        // Chart for total logins
+        var loginCtx = document.getElementById('loginChart').getContext('2d');
+    var loginChart = new Chart(loginCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ login_labels|safe }},
+            datasets: [{
+                label: 'Total daily logins',
+                data: {{ login_data|safe }},
+                backgroundColor: 'rgba(249, 180, 45, 1)',
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    // Chart for total registrations
+    var registrationCtx = document.getElementById('registrationChart').getContext('2d');
+    var registrationChart = new Chart(registrationCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ registration_labels|safe }},
+            datasets: [{
+                label: 'Total daily registrations',
+                data: {{ registration_data|safe }},
+                backgroundColor: 'rgba(231, 109, 137, 1)',
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    // Chart for products by category
+    var categoryCtx = document.getElementById('categoryChart').getContext('2d');
+    var categoryChart = new Chart(categoryCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ category_labels|safe }},
+            datasets: [{
+                label: 'Products by Category',
+                data: {{ category_data|safe }},
+                backgroundColor: 'rgba(159, 90, 253, 1)',
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+        // Chart for total products by subcategory
+        var subcategoryCtx = document.getElementById('subcategoryChart').getContext('2d');
+        var subcategoryChart = new Chart(subcategoryCtx, {
+            type: 'bar', // Default chart type
+            data: {
+                labels: {{ subcategory_labels|safe }}, // Labels for subcategories
+                datasets: [{
+                    label: 'Products by Subcategory',
+                    data: {{ subcategory_data|safe }}, // Data for product counts per subcategory
+                    backgroundColor: 'rgba(255, 166, 201)', // Bar color
+                    borderColor: 'black',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    // Chart for orders per buyer
+    var buyerCtx = document.getElementById('buyerChart').getContext('2d');
+    var buyerChart = new Chart(buyerCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ buyer_labels|safe }},
+            datasets: [{
+                label: 'Orders per Buyer',
+                data: {{ buyer_data|safe }},
+                backgroundColor:   // Array of colors for each bar
+                    'rgba(135, 211, 248)',
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    // Chart for products by vendor
+    var productsByVendorCtx = document.getElementById('productsByVendorChart').getContext('2d');
+    var productsByVendorChart = new Chart(productsByVendorCtx, {
+        type: 'bar',  // Default chart type
+        data: {
+            labels: {{ vendor_product_labels|safe }},  // Labels for vendor names
+            datasets: [{
+                label: 'Products by Vendor',
+                data: {{ vendor_product_data|safe }},  // Data for product counts per vendor
+                backgroundColor: 'rgba(31, 58, 147, 1)',
+                  // Bar color
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+
+    function updateChartType(chart, type) {
+            chart.config.type = type;
+            chart.update();
+        }
+
+
+
+    // Event listeners to update chart types
+    document.getElementById('userChartType').addEventListener('change', function() {
+        updateChartType(userChart, this.value);
+    });
+    document.getElementById('orderChartType').addEventListener('change', function() {
+        updateChartType(orderChart, this.value);
+    });
+    document.getElementById('subcategoryChartType').addEventListener('change', function() {
+            updateChartType(subcategoryChart, this.value);
+    });
+    document.getElementById('categoryChartType').addEventListener('change', function() {
+        updateChartType(categoryChart, this.value);
+    });
+    document.getElementById('buyerChartType').addEventListener('change', function() {
+        updateChartType(buyerChart, this.value);
+    });
+    document.getElementById('productsByVendorChartType').addEventListener('change', function() {
+        updateChartType(productsByVendorChart, this.value);
+    });
+    document.getElementById('loginChartType').addEventListener('change', function() {
+        updateChartType(loginChart, this.value);
+    });
+    document.getElementById('registrationChartType').addEventListener('change', function() {
+        updateChartType(registrationChart, this.value);
+    });
+
+
+
+
+    
+</script>
+</body>
+</html>
+
+

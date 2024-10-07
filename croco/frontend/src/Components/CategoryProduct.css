@@ -1,0 +1,50 @@
+
+
+section {
+    padding-top: 130px; /* Adjust the value according to the height of your navbar */
+}
+
+.category-title {
+    font-family: 'Trebuchet MS';
+    font-size: 30px;
+    color: black;
+}
+
+
+
+.card-footer {
+    font-size: 12px;
+    color: black;
+}
+
+.pagination {
+    font-size: 10px; /* Adjust the font size as needed */
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px; /* Adjust the margin top to move it down */
+}
+
+
+.pagination-container .pagination li {
+    margin: 4 2px; /* Adjust the margin between pagination items */
+}
+
+.pagination-container .pagination li a {
+    color: rgb(39, 124, 189); /* Set the color of pagination links */
+}
+
+.pagination-container .pagination li.active a {
+    background-color: #000000; /* Set the background color of active pagination link */
+    color: #ffffff00; /* Set the text color of active pagination link */
+}
+
+.card-hover:hover {
+    /* Add your hover styles here */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example shadow effect */
+    transform: scale(1.05); /* Example scaling effect */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+

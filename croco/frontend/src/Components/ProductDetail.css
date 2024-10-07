@@ -1,0 +1,28 @@
+section {
+    padding-top: 180px; /* Adjust the value according to the height of your navbar */
+}
+
+.carousel-control-prev {
+    left: -110px; /* Adjust the value as needed to move it more to the left */
+}
+
+.carousel-control-next {
+    right: -110px; /* Adjust the value as needed to move it more to the right */
+}
+.carousel-control-prev.image-control {
+    left: 20px;
+}
+
+.carousel-control-next.image-control {
+    right: 20px;
+}
+
+.carousel-inner {
+    overflow:visible; /* Allow overflow for the inner carousel */
+  }
+
+  .row2 {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing */
+}
+
