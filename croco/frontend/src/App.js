@@ -54,7 +54,7 @@ import ChangePass from './Components/Vendor/ChangePass';
 import About from './Components/About.js';
 import Contact from './Components/Contact.js';
 import MovingBanner from './Components/MovingBanner'; 
-import CrocoNutritionProducts from './Components/CrocoNutritionProducts.js';
+import CrocoNutritionProducts from './Components/CrocoNutritionProducts.jsx';
 import CrocoTeamProducts from './Components/CrocoTeamProducts.js';
 import CrocoWearProducts from './Components/CrocoWearProducts.js';
 import StoreProducts from './Components/StoreProducts.jsx';

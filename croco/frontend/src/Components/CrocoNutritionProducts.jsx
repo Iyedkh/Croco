@@ -69,8 +69,9 @@ function CrocoNutritionProducts() {
     const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
+        
         <section className="container mt-5 products-page">
-            <h3 className="text-center text-white mb-5" style={{ fontFamily: 'Impact', fontSize: '30px' }}>
+            <h3 className="text-center text-black mb-5" style={{ fontFamily: 'Impact', fontSize: '30px' }}>
                 Produits Croco Nutrition
             </h3>
             <div className="row">

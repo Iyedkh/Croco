@@ -57,63 +57,46 @@ function OneProduct(props) {
     }
 
     return (
-        <div className='col-12 col-md-3 col-sm-4 mb-4'>
-            <div className="card" style={{ height: '380px' }}> {/* Fixed height */}
+        <div className='col-12 col-md-4 col-sm-2 mb-4'>
+            <div className="card" style={{ height: '100%' }}> {/* Fixed height */}
                 <Link to={`/product/${props.product.slug}/${props.product.id}`} className="link-wrapper">
                     <img src={props.product.image} className="card-title" alt="..." />
                 </Link>
-                <div className="card-body d-flex flex-column" style={{ fontFamily: 'Impact', fontSize: '18px', color: 'black', textDecoration: 'none', flexGrow: 1 }}>
+                <div className="card-body-product d-flex flex-column align-items-center" style={{ padding:'8px', fontFamily: 'Impact', fontSize: '18px', color: 'black', textDecoration: 'none', flexGrow: 1 }}>
                     <h5 className="card-title">
                         <Link style={{ fontFamily: 'Impact', fontSize: '18px', color: 'black', textDecoration: 'none' }} to={`/product/${props.product.slug}/${props.product.id}`}>
                             {props.product.title}
                         </Link>
                     </h5>
                     <h5 className="card-title" style={{ fontFamily: 'Impact', color: '#1e517b' }}>Price: {props.product.price} DT</h5>
-                </div>
-                <div className='card-footer d-flex flex-column align-items-center'>
+                  <div className='card-footer-product d-flex flex-column align-items-center '>
                     <button
                         title='Add to cart'
                         style={{
-                            padding: '8px 16px',
-                            fontSize: '15px',
+                            borderTop: '3px solid #0000',
+                            padding: '10px 25px',
                             display: 'flex',
                             alignItems: 'center',
-                            borderRadius: '0px',
-                            backgroundColor: '#28a745',
-                            color: '#fff',
+                            justifyContent: 'center',
+                            borderRadius: '50px',  // Rounded corners
+                            backgroundColor: '#1e1e1e',  // Dark background color
+                            color: '#fff',  // White text color
                             border: 'none',
                             fontFamily: 'Impact',
+                            fontSize: '15px',
                             cursor: 'pointer',
                             transition: 'background-color 0.3s ease',
-                            marginBottom: '10px',
-                            width: '100%'
+                            width: '100%', // Make it full width like the image
+                            height: '50px'  // Ensure height similar to the image
                         }}
                         onClick={cartAddButtonHandler}
                     >
                         <i className="fa-solid fa-cart-plus" style={{ marginRight: '8px'}}></i>Add to Cart
                     </button>
-                    <button
-                        title='Add to wishlist'
-                        style={{
-                            padding: '8px 16px',
-                            fontSize: '15px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            borderRadius: '0px',
-                            backgroundColor: '#dc3545',
-                            fontFamily: 'Impact',
-                            color: '#fff',
-                            border: 'none',
-                            cursor: 'pointer',
-                            transition: 'background-color 0.3s ease',
-                            width: '100%'
-                        }}
-                        onClick={saveInWishList}
-                        disabled={!userContext || userContext.login}
-                    >
-                        <i className="fa fa-heart" style={{ marginRight: '8px' }}></i>Add to wishlist
-                    </button>
+                    
+                </div>  
                 </div>
+                
                 {wishlistMessage && (
                     <div className="alert alert-success mt-2" role="alert" style={{ fontFamily: 'Trebuchet MS', textAlign: 'center', borderRadius: '0' }}>
                         {wishlistMessage}

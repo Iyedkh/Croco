@@ -443,8 +443,24 @@
     display: block;
   }
   
-  
-  
+  @media (min-width: 768px) {
+    .hide-on-desktop {
+        display: none;
+    }
+}
+.tit {
+  width: 30%;
+  border-bottom: 5px solid red;
+}
+.titl{
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .tit {
+      width: 90%;/* Ensure it takes full width on small screens */
+  }
+}
   
   
   

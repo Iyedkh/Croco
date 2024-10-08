@@ -1,8 +1,10 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import OneProduct from './OneProduct';
 import { useState, useEffect } from 'react';
-import CrocoTeamStore from './CrocoTeamStore'; // Import the new component
+import CrocoTeamStore from './CrocoTeamStore';
 import MovingBanner from './MovingBanner';
+import { FaFilter } from 'react-icons/fa';
+
 function StoreProducts() {
     const baseUrl = 'http://127.0.0.1:8000/';
     const [products, setProducts] = useState([]);
@@ -14,6 +16,7 @@ function StoreProducts() {
     const [storeName, setStoreName] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [showFilters, setShowFilters] = useState(false);
 
     const { storeId } = useParams();
     const location = useLocation();
@@ -78,26 +81,95 @@ function StoreProducts() {
     const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     // Condition to render Croco Team Store component
-    if (storeId === '3') { // Croco Team Store ID
+    if (storeId === '3') {
         return <CrocoTeamStore />;
     }
 
     return (
-        <section className="container mt-5 products-page">
-            <MovingBanner></MovingBanner>
-            {/* Store name heading */}
-            <h3 className="text-center text-white mb-5" style={{ fontFamily: 'Impact', fontSize: '30px' }}>
+        <div className="div" style={{ width: '100%', height: '100%', marginTop: '190px' }}>
+            <MovingBanner />
+            <div className="titl">
+            <h1 className="text-center text-black mb-5 fw-bold tit" style={{ fontFamily: 'Cursive', fontSize: '30px' }}>
                 {storeName ? `Produits ${storeName}` : 'Products'}
-            </h3>
+            </h1>
+            </div>
+           
 
-            <div className="row">
-                {/* Start Sidebar Filters */}
+
+            {/* Filter Icon for Mobile */}
+            <div className="text-center mb-3 hide-on-desktop">
+                <FaFilter
+                    size={24}
+                    onClick={() => setShowFilters(!showFilters)}
+                    style={{ cursor: 'pointer', color: 'black' }}
+                />
+            </div>
+
+            {/* Filter Section (Visible if showFilters is true) */}
+            {showFilters && (
+                <div className="mb-4 p-3 shadow-sm  card">
+                    <h5 style={{ fontFamily: 'Impact' }}>Filter Products</h5>
+                    
+                    {/* Single Filter: Category Filter */}
+                    <div className="mb-4">
+                        <label htmlFor="category" className="form-label" style={{ fontFamily: 'Impact' }}>Category</label>
+                        <select id="category" className="form-select" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                            <option value="">All Categories</option>
+                            {categories.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {/* Price Range Filter */}
+                    <div className="mb-4">
+                        <label htmlFor="price_min" className="form-label" style={{ fontFamily: 'Impact' }}>Price Range</label>
+                        <div className="d-flex gap-2">
+                            <input
+                                type="number"
+                                id="price_min"
+                                name="min"
+                                className="form-control"
+                                placeholder="Min"
+                                value={priceRange.min}
+                                onChange={handlePriceChange}
+                            />
+                            <input
+                                type="number"
+                                id="price_max"
+                                name="max"
+                                className="form-control"
+                                placeholder="Max"
+                                value={priceRange.max}
+                                onChange={handlePriceChange}
+                            />
+                        </div>
+                    </div>
+
+                    <button className="button-30" style={{ fontFamily: 'Impact', borderRadius: '0' }} onClick={() => setShowFilters(false)}>
+                        Apply Filters
+                    </button>
+                </div>
+            )}
+
+            {/* Sidebar for Desktop */}
+            <div className="sideandpro"
+                style={{
+                    width: '80%',
+                    margin: '0 auto',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    gap: '20px',
+                }}>
                 
-                <aside className="col-md-3">
+                <aside className="col-md-3 d-none d-md-block">
                     <div className="card shadow-sm p-4 mb-5">
                         <h5 className="mb-4" style={{ fontFamily: 'Impact' }}>Filter Products</h5>
 
-                        {/* Category Filter */}
+                        {/* Single Filter: Category Filter */}
                         <div className="mb-4">
                             <label htmlFor="category" className="form-label" style={{ fontFamily: 'Impact' }}>Category</label>
                             <select id="category" className="form-select" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
@@ -105,19 +177,6 @@ function StoreProducts() {
                                 {categories.map((category) => (
                                     <option key={category.id} value={category.id}>
                                         {category.name}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        {/* Subcategory Filter */}
-                        <div className="mb-4">
-                            <label htmlFor="subcategory" className="form-label" style={{ fontFamily: 'Impact' }}>Subcategory</label>
-                            <select id="subcategory" className="form-select" value={selectedSubcategory} onChange={(e) => setSelectedSubcategory(e.target.value)}>
-                                <option value="">All Subcategories</option>
-                                {subcategories.map((subcategory) => (
-                                    <option key={subcategory.id} value={subcategory.id}>
-                                        {subcategory.name}
                                     </option>
                                 ))}
                             </select>
@@ -154,29 +213,25 @@ function StoreProducts() {
                     </div>
                 </aside>
 
-                {/* End Sidebar Filters */}
-
-                {/* Product Listing */}
-                <div className="col-md-9">
-                    <div className="row mb-4" style={{ fontFamily: 'Trebuchet MS', fontSize: '18px', color: 'black' }}>
-                        {products.map((product) => <OneProduct key={product.id} product={product} currentPage={currentPage} />)}
+                {/* Product Listings */}
+                <div className="products col-md-9">
+                    <div className="row row-cols-1 row-cols-md-4 g-4">
+                        {products.map((product) => (
+                            <OneProduct key={product.id} product={product} />
+                        ))}
                     </div>
 
                     {/* Pagination */}
-                    {totalPages > 1 && (
-                        <nav aria-label="Page navigation example">
-                            <ul className="pagination justify-content-center">
-                                {pageNumbers.map((pageNumber) => (
-                                    <li key={pageNumber} className={`page-item ${currentPage === pageNumber ? 'active' : ''}`}>
-                                        <Link onClick={() => changePage(pageNumber)} to={`/Stores/${storeId}?page=${pageNumber}`} className="page-link">{pageNumber}</Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    )}
+                    <div className="pagination mt-4">
+                        {pageNumbers.map((pageNumber) => (
+                            <button key={pageNumber} onClick={() => changePage(pageNumber)} className="button-30 me-2">
+                                {pageNumber}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 
