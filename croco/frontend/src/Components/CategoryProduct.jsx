@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './CategoryProduct.css'; // Import your CSS file for styling
-
+import MovingBanner from './MovingBanner';
 function CategoryProducts(props) {
     const baseUrl = 'http://127.0.0.1:8000/';
     const [subcategories, setSubcategories] = useState([]);
@@ -21,10 +21,15 @@ function CategoryProducts(props) {
     }
 
     return (
-        <section className="container mt-5 category-product-container">
-            <h3 className='mb-4' style={{ fontFamily: 'Trebuchet MS', fontSize: '30px', color: 'black', textAlign: 'center',fontWeight:'bold' }}> Subcategories </h3>
-            <div className='row mb-2'>
-                <div style={{ marginBottom: '33px' }}></div>
+        <div style={{display: 'flex', justifyContent:'center', height:'100%', width:'100%'}}>
+             <section className="container  category-product-container" style={{marginTop:'180px', height:'100%', width:'100%'}}>
+            <MovingBanner></MovingBanner>
+            <div className="titl">
+                <h3 className='tit' style={{ fontFamily: 'Trebuchet MS', fontSize: '30px', color: 'black', textAlign: 'center',fontWeight:'bold' }}> Subcategories </h3>
+            </div>
+            
+            <div className='row mb-2' style={{width:'100%', height:'100%',display:'flex', justifyContent:'center'}}>
+                <div style={{ marginBottom: '33px',  }}></div>
                 {subcategories.map((subcategory) => (
                     <div key={subcategory.id} className="col-md-3 mb-4">
                         <div className="card card-hover"> {/* Added class 'card-hover' */}
@@ -33,8 +38,8 @@ function CategoryProducts(props) {
                                 className="card-img-top" 
                                 alt={subcategory.title} 
                                 style={{ 
-                                    maxWidth: '100%', 
-                                    height: '90px',   
+                                    maxWidth: '95%', 
+                                    height: '100%',   
                                     margin: '15px auto 0', 
                                     display: 'block', 
                                     objectFit: 'contain', 
@@ -58,6 +63,8 @@ function CategoryProducts(props) {
                 ))}
             </div>
         </section>
+        </div>
+       
     );
 }
 

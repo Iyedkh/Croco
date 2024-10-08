@@ -461,6 +461,11 @@
       width: 90%;/* Ensure it takes full width on small screens */
   }
 }
+.card:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example shadow effect */
+  transform: scale(1.05); /* Example scaling effect */
+  transition: all 0.3s ease; /* Smooth transition */
+}
   
   
   

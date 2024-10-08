@@ -159,7 +159,7 @@ function Home() {
                                         style={{ width: '70%', height: 'auto' }}  
                                     />
                                 </Link>
-                                <p className="mt-2 text-white" style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{store.name}</p>
+                                <p className="mt-2 text-black" style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{store.name}</p>
                             </SwiperSlide>
                         ))}
                     </Swiper>
