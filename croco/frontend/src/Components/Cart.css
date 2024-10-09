@@ -1,47 +1,133 @@
+.cart-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 140px;
+    padding: 20px;
+}
+
+.cart-content {
+    width: 100%;
+    max-width: 1200px;
+}
+
 h3 {
-    font-family: Trebuchet MS;
+    font-family: 'Trebuchet MS';
     font-size: 28px;
-    color: black;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.cart-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.cart-item-details {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-details img {
+    max-width: 75px;
+    margin-right: 15px;
+}
+
+.cart-item-info {
+    font-family: 'Trebuchet MS';
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.cart-quantity button {
+    border: none;
+    background-color: #ddd;
+    padding: 5px 10px;
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+.cart-price, .cart-remove {
+    text-align: center;
+}
+
+.cart-remove button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.cart-remove i {
+    font-size: 24px;
+    color: #000;
+}
+.cart-remove i:hover {
+    font-size: 24px;
+    color: red;
+}
+
+.cart-summary {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.summary-details, .summary-shipping, .summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: 'Trebuchet MS';
+    font-size: 16px;
 }
 
 .btn {
-    font-family: Trebuchet MS;
-}
-
-.table th,
-.table td {
-    border: 0.5px solid #adadadb6;
-}
-
-.table th {
-    background-color: #dadee681;
-}
-
-.custom-table thead th,
-.custom-table tbody td {
-    font-family: Trebuchet MS; /* Use Arial font */
-}
-
-.btn:hover {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.product-image-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.img-thumbail {
     display: block;
-    margin: 0 auto;
-    max-width: 75px;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Trebuchet MS';
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-/* Set transparent background for tbody and tfoot */
-.table tbody,
-.table tfoot {
-    background-color: #dadee600;
-    border: 0.5px solid #a8a8a800;
+.btn.confirm-order {
+    background-color: #000;
+    color: white;
+}
+
+.btn.start-shopping {
+    background-color: #ffc107;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-summary {
+        margin-top: 20px;
+    }
+
+    .btn {
+        max-width: none;
+        width: 100%;
+    }
+}
+.Link{
+    font-family: Arial, Helvetica, sans-serif;
 }

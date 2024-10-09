@@ -83,7 +83,9 @@ function Register(props) {
         registerFormData.companyName !== ''; 
 
     return (
-        <section className='container mt-5'>
+        <>
+        <div style={{marginTop:'150px', display:'flex',justifyContent:'center'}}>
+<section className='container mt-5'>
             <div className='row'>
                 <div className='col-md-8 col-12 offset-md-2'>
                     <div className='card register-card1'>
@@ -136,6 +138,10 @@ function Register(props) {
                 </div>
             </div>
         </section>
+        </div>
+        
+        </>
+        
     );
 }
 

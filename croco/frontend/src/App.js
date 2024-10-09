@@ -70,9 +70,11 @@ function App() {
         <CartContext.Provider value={{ cartData, setCartData }}>
             <NotificationProvider>
                 <>
-                {location.pathname === '/' && <MovingBanner />}               
+                {location.pathname === '/' && <MovingBanner />}     
+                    <MovingBanner></MovingBanner>          
                     <Navbar />
                     <BackgroundAnimation>
+
                         <Routes>
                             {/* Main Routes */}
                             
@@ -130,7 +132,8 @@ function App() {
                         </Routes>
                     </BackgroundAnimation>
                     {/* Render Footer only for main routes */}
-                    {['/', '/Products', '/Categories', '/Category/:Category_slug/:Category_id', '/Subcategory/:subcategoryId/products', '/Subcategory', '/Products/:tag', '/Product/:Product_slug/:Product_id', '/Confirm-Order', '/NewOrders', '/Order/success', '/Order/failure'].includes(location.pathname) && <Footer />}
+                    {['/', '/Products', '/Categories', '/Category/:Category_slug/:Category_id', '/Subcategory/:subcategoryId/products', '/Subcategory', '/Products/:tag', '/Product/:Product_slug/:Product_id', '/Confirm-Order', '/NewOrders', '/Order/success', '/Order/failure'].includes(location.pathname) }
+                    <Footer></Footer>
                 </>
             </NotificationProvider>
         </CartContext.Provider>

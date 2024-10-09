@@ -53,7 +53,9 @@ function Login(props) {
     const buttonEnable = loginFormData.username !== '' && loginFormData.password !== '';
 
     return (
-        <section className='container' style={{ marginTop: '80px' }}>
+        <>
+        <div style={{marginTop:'150px', display:'flex',justifyContent:'center'}}>
+<section className='container' style={{ marginTop: '80px' }}>
             <div className='row'>
                 <div className='col-md-8 col-12 offset-md-2'>
                     <div className='card login-card'>
@@ -87,6 +89,9 @@ function Login(props) {
                 </div>
             </div>
         </section>
+        </div>
+        </>
+        
     )
 }
 

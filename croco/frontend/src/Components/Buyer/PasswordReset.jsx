@@ -26,7 +26,9 @@ function PasswordReset() {
     };
 
     return (
-        <div className="container h-100">
+        <>
+        <div style={{marginTop:'150px', display:'flex',justifyContent:'center'}}>
+           <div className="container h-100">
             <div className="row h-100 justify-content-center align-items-center">
                 <div style={{ marginTop: '200px' }} className="col-md-5">
                     <div className="card hover-effect">
@@ -55,7 +57,10 @@ function PasswordReset() {
                     </div>
                 </div>
             </div>
+        </div> 
         </div>
+        </>
+        
     );
 }
 

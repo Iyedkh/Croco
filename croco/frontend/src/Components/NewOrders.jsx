@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 function NewOrders(props) {
     return (
-        <section className="container mt-4">
+        <>
+        <div style={{marginTop:'150px', display:'flex',justifyContent:'center'}}>
+            <section className="container mt-4">
             <h3>Your Orders (4)</h3>
             <div className="table-responsive">
     <table className="table table-bordered table-hover" style={{  borderSpacing: '0 7px', marginTop: '-6px' }}>
@@ -75,6 +77,9 @@ function NewOrders(props) {
 </div>
 
         </section>
+        </div>
+        </>
+        
     )
 }
 

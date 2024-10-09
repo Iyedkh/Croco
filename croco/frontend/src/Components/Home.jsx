@@ -96,9 +96,11 @@ function Home() {
     };
 
     return (
-        <main className="container-fluid p-0" style={{ marginTop: '140px' }}> {/* Adjust the margin to match your navbar height */}
+        <>
+        <div style={{marginTop:'150px', display:'flex', justifyContent:'center'}}>
+         <main className="container-fluid p-0" > {/* Adjust the margin to match your navbar height */}
             {/* Image Slider */}
-            <div className="slider-container mb-4" style={{ width: '100vw', overflow: 'hidden' }}> {/* Full-width container */}
+            <div className="slider-container mb-4" style={{ width: '100%', overflow: 'hidden' }}> {/* Full-width container */}
                 <Slider {...settings}>
                     {randomImages.map((image, index) => (
                         <div key={index} className="slider-item">
@@ -114,7 +116,7 @@ function Home() {
             </div>
 
             {/* Latest Products with Swiper */}
-            <h1 className="text-center text-white mb-4 display-4 "style={{ fontSize: '3rem', fontWeight: 'bold' }}>Nos produits</h1>
+            <h1 className="text-center text-black mb-4 display-4 "style={{ fontSize: '3rem', fontWeight: 'bold' }}>Nos produits</h1>
             <div className="row justify-content-center m-4">
                 <Swiper {...swiperSettings}>
                     {products.map((product) => (
@@ -146,7 +148,7 @@ function Home() {
             </div>
 
             {/* Stores Section in Swiper */}
-            <h1 className="text-center my-5 text-white" style={{ fontSize: '3rem', fontWeight: 'bold' }}>Nos boutiques</h1>
+            <h1 className="text-center my-5 text-black" style={{ fontSize: '3rem', fontWeight: 'bold' }}>Nos boutiques</h1>
                 <div className="row justify-content-center mr-0">
                     <Swiper {...storeSwiperSettings}>
                         {stores.map(store => (
@@ -165,7 +167,10 @@ function Home() {
                     </Swiper>
                 </div>
 
-        </main>
+        </main>   
+        </div>
+        </>
+        
     );
 }
 
